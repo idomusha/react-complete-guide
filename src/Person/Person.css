@@ -1,7 +1,12 @@
 .Person {
-    width: 60%;
-    border: 1px solid #eee;
-    margin: 8px auto;
+    margin: 16px auto;
     padding: 16px;
+    width: 30%;
+    background-color: #f7f7f7;
+    border: 1px solid #eee;
+    box-shadow: 0 3px 5px #eee;
     text-align: center;
+}
+.Person h3 {
+    margin: 0;
 }

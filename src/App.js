@@ -6,39 +6,34 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Max', age: 28},
-      { name: 'Ali', age: 29},
-      { name: 'Sam', age: 31},
-    ]
+      { id: 1, name: 'Max', age: 28},
+      { id: 2, name: 'Ali', age: 29},
+      { id: 3, name: 'Sam', age: 31},
+    ],
+    showPersons: true
   }
 
-  switchNameHandler = (value) => {
-    this.setState({
-      persons: [
-        { name: value, age: 28},
-        { name: 'Ali', age: 29},
-        { name: 'Sam', age: 31},
-      ]
-    });
-  };
+  handleChangePersonName = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => p.id === id);
 
-  nameChangeHandler = (event) => {
-    this.setState( {
-      persons: [
-        { name: 'Max', age: 28},
-        { name: 'Ali', age: 29},
-        { name: event.target.value, age: 31},
-      ]
-    });
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    this.setState({persons: persons});
   }
 
-  togglePersonsHandler = () => {
+  handleTogglePersons = () => {
     const doesShow = this.state.showPersons;
     this.setState({showPersons: !doesShow});
   };
 
-  deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+  handleDeletePerson = (personIndex) => {
+    const persons = this.state.persons.slice();
     persons.splice(personIndex, 1);
     this.setState({persons: persons})
   };
@@ -58,19 +53,23 @@ class App extends Component {
           {
             this.state.persons.map((person, index) => {
               return <Person
-              click={() => this.deletePersonHandler(index)}
+              key={person.id}
+              click={() => this.handleDeletePerson(index)}
+              change={(event) => this.handleChangePersonName(event, person.id)}
               name={person.name}
               age={person.age} />
             })
           }
         </div>
       );
+
+      style.backgroundColor = 'greenyellow';
     }
 
     return (
       <div className="App">
         <h1>App title</h1>
-        <button style={style} onClick={ this.togglePersonsHandler }>Toggle</button>
+        <button style={style} onClick={this.handleTogglePersons}>Toggle</button>
 
         {persons}
 
