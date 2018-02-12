@@ -1,6 +1,7 @@
 .Person {
+    position: relative;
     margin: 16px auto;
-    padding: 16px;
+    padding: 32px;
     width: 30%;
     background-color: #f7f7f7;
     border: 1px solid #eee;
@@ -9,4 +10,12 @@
 }
 .Person h3 {
     margin: 0;
+}
+.Person button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: crimson;
+    color: white;
+    cursor: pointer;
 }
