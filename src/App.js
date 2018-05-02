@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import './App.css';
 import Radium, { StyleRoot } from 'radium';
+import styles from './App.css';
+// import logo from './logo.svg';
 import Person from './Person/Person';
 
 
@@ -12,45 +12,37 @@ class App extends Component {
       { id: 2, name: 'Ali', age: 29},
       { id: 3, name: 'Sam', age: 31},
     ],
-    showPersons: true
-  }
+    showPersons: true,
+  };
 
   handleChangePersonName = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
 
     const person = {
-      ...this.state.persons[personIndex]
+      ...this.state.persons[personIndex],
     };
 
     person.name = event.target.value;
 
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    this.setState({persons: persons});
+    this.setState({ persons });
   }
 
   handleTogglePersons = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons: !doesShow});
+    this.setState({ showPersons: !doesShow });
   };
 
   handleDeletePerson = (personIndex) => {
     const persons = this.state.persons.slice();
     persons.splice(personIndex, 1);
-    this.setState({persons: persons})
+    this.setState({ persons });
   };
 
   render() {
-    const style = {
-      backgroundColor: 'cyan',
-      border: '1px solid grey',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightblue',
-      }
-    };
     let persons = null;
+    let buttonClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -68,27 +60,24 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = 'greenyellow';
-      style[':hover'] = {
-        backgroundColor: 'lightgreen',
-      };
+      buttonClass = styles.opened;
     }
 
-    let classes = [];
+    const classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push('color-red');
+      classes.push(styles['color-red']);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('font-weight-700');
+      classes.push(styles['font-weight-700']);
     }
 
 
     return (
       <StyleRoot>
-        <div className="App">
+        <div className={styles.App}>
           <h1>App title</h1>
           <p className={classes.join(' ')}>Awesome paragraph!</p>
-          <button style={style} onClick={this.handleTogglePersons}>Toggle</button>
+          <button className={buttonClass} onClick={this.handleTogglePersons}>Toggle</button>
 
           {persons}
 

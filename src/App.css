@@ -20,3 +20,25 @@ button {
 .font-weight-700 {
   font-weight: 700;
 }
+
+.App button {
+  border: 1px solid lightseagreen;
+  padding: 16px;
+  background-color: white;
+  color: lightseagreen;
+  font: inherit;
+}
+
+.App button:hover {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.App button.opened {
+  border-color: darkcyan;
+  color: darkcyan;
+}
+
+.App button.opened:hover {
+  background-color: darkcyan;
+}
