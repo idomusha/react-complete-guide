@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import Radium, { StyleRoot } from 'radium';
-import styles from './App.css';
+import styles from './App.scss';
 // import logo from './logo.svg';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 
 class App extends Component {
   state = {
     persons: [
-      { id: 1, name: 'Max', age: 28},
-      { id: 2, name: 'Ali', age: 29},
-      { id: 3, name: 'Sam', age: 31},
+      { id: 1, name: 'Max', age: 28 },
+      { id: 2, name: 'Ali', age: 29 },
+      { id: 3, name: 'Sam', age: 31 },
     ],
     showPersons: true,
   };
@@ -49,12 +50,13 @@ class App extends Component {
         <div>
           {
             this.state.persons.map((person, index) => {
-              return <Person
-              key={person.id}
-              click={() => this.handleDeletePerson(index)}
-              change={(event) => this.handleChangePersonName(event, person.id)}
-              name={person.name}
-              age={person.age} />
+              return <ErrorBoundary key={person.id}>
+                <Person
+                  click={() => this.handleDeletePerson(index)}
+                  change={(event) => this.handleChangePersonName(event, person.id)}
+                  name={person.name}
+                  age={person.age} />
+              </ErrorBoundary>
             })
           }
         </div>
@@ -84,7 +86,11 @@ class App extends Component {
         </div>
       </StyleRoot>
     );
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'App title'))
+    /* return React.createElement(
+      'div',
+      {className: 'App'},
+      React.createElement('h1', null, 'App title')
+    ); */
   }
 }
 

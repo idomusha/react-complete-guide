@@ -1,15 +1,11 @@
 import React from 'react';
 import Radium from 'radium';
-import styles from './Person.css';
+import styles from './Person.scss';
 
 const person = (props) => {
-  const style = {
-    '@media (max-width: 812px)': {
-      width: '100%',
-    },
-  };
+  // if (Math.random() > 0.7) throw new Error('FAIL');
   return (
-    <div className={styles.Person} style={style}>
+    <div className={styles.Person}>
       <h3>Person: {props.name} | {props.age} </h3>
       <p>{props.children}</p>
       <input type="text" onChange={props.change} value={props.name} />

@@ -1,0 +1,32 @@
+.Person {
+    position: relative;
+    margin: 16px auto;
+    padding: 32px;
+    width: 50%;
+    max-width: 500px;
+    background-color: #f7f7f7;
+    border: 1px solid #eee;
+    box-shadow: 0 3px 5px #eee;
+    text-align: center;
+
+    h3 {
+        margin: 0;
+    }
+    button,
+    button:hover, {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-color: crimson;
+        background-color: crimson;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 812px) {
+    .Person {
+        width: 100%;
+        max-width: none;
+    }
+}
