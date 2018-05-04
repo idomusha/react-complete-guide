@@ -1,0 +1,19 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+input,
+button {
+  min-height: 40px;
+  padding: 10px;
+  border: 0 none;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px darkturquoise;
+  }
+}
+
+.App {
+  text-align: center;
+  padding: 0 16px;
+}
