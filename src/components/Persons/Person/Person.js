@@ -1,25 +1,61 @@
-import React, { Component } from 'react';
-import styles from './Person.scss';
-import wrapper from '../../../hoc/wrapper';
-
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import styles from "./Person.scss";
+import wrapper from "../../../hoc/wrapper";
+import { AuthContext } from "../../../containers/App";
 class Person extends Component {
+  constructor(props) {
+    super(props);
+    this.textInput = React.createRef();
+  }
+
+  componentDidMount() {
+    if (this.props.position === 0) {
+      this.textInput.current.focus();
+    }
+  }
+
   componentWillUnmount() {
     // Component is about to get removed => Perform any cleanup work here!
-    console.log('I\'m about to be removed!');
+    console.log("I'm about to be removed!");
+  }
+
+  focus() {
+    this.textInput.current.focus();
   }
 
   render() {
-      // if (Math.random() > 0.7) throw new Error('FAIL');
+    // if (Math.random() > 0.7) throw new Error('FAIL');
     return (
       <React.Fragment>
-        <h3>Person: {this.props.name} | {this.props.age} </h3>
+        <h3>
+          Person: {this.props.name}{" "}
+          <AuthContext.Consumer>
+            {auth => (auth ? <small> (logged)</small> : null)}
+          </AuthContext.Consumer>
+          {" | "}
+          {this.props.age}{" "}
+        </h3>
         <p>{this.props.children}</p>
-        <input type="text" onChange={this.props.change} value={this.props.name} />
-        <button type="button" onClick={this.props.click}>Delete</button>
+        <input
+          ref={this.textInput}
+          type="text"
+          onChange={this.props.change}
+          value={this.props.name}
+        />
+        <button type="button" onClick={this.props.click}>
+          Delete
+        </button>
       </React.Fragment>
     );
   }
+}
 
+Person.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  click: PropTypes.func,
+  change: PropTypes.func
 };
 
 export default wrapper(Person, styles.Person);

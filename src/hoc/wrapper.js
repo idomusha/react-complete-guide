@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 /* const wrapper = (WrappedComponent, className) => (props) => (
     <div className={className}>
@@ -6,14 +6,20 @@ import React, { Component } from 'react';
     </div>
 ); */
 
-const wrapper = (WrappedComponent, className) => class extends Component {
+const wrapper = (WrappedComponent, className) => {
+  const Wrapper = class extends Component {
     render() {
-        return (
-            <div className={className}>
-                <WrappedComponent {...this.props}/>
-            </div>
-        );
+      return (
+        <div className={className}>
+          <WrappedComponent ref={this.props.forwardedRef} {...this.props} />
+        </div>
+      );
     }
-}
+  };
+
+  return React.forwardRef((props, ref) => {
+    return <Wrapper {...props} forwardedRef={ref} />;
+  });
+};
 
 export default wrapper;
