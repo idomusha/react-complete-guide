@@ -4,11 +4,10 @@ import styles from './Modal.scss';
 import Backdrop from '../Backdrop/Backdrop';
 
 const modal = (props) => (
-    <React.Fragment>
-        <Backdrop
+    <Backdrop
             show={props.show}
             clicked={props.modalClosed}
-        />
+    >
         <div
             className={styles.Modal}
             style={{
@@ -18,8 +17,7 @@ const modal = (props) => (
         >
             {props.children}
         </div>
-    </React.Fragment>
-
+    </Backdrop>
 );
 
 export default modal;

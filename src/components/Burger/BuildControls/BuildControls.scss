@@ -10,22 +10,23 @@
 
 
 .OrderButton {
-    background-color: #DAD735;
+    background-color: mediumseagreen;
     outline: none;
     cursor: pointer;
-    border: 1px solid #966909;
-    color: #966909;
+    border: 1px solid mediumseagreen;
+    color: white;
     font-family: inherit;
     font-size: 1.2em;
     padding: 15px 30px;
     margin: 20px;
     text-transform: uppercase;
+    font-weight: 700;
+    transition: .3s ease-in;
 }
 
 .OrderButton:hover, .OrderButton:active {
     background-color: #A0DB41;
-    border: 1px solid #966909;
-    color: #966909;
+    border: 1px solid #A0DB41;
 }
 
 .OrderButton:disabled {
