@@ -23,3 +23,59 @@
     border-color: crimson;
     color: crimson;
 }
+
+// toggle sidedrawer
+$blue: #00DFFC;
+$dullWhite: #f6f6f6;
+$easing: cubic-bezier(.6, .05, .28, .91);
+* {
+    box-sizing: border-box;
+}
+
+.btn {
+    display: block;
+    position: fixed;
+    z-index: 101;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    transition: left .3s $easing;
+    i {
+        display: block;
+        width: 35px;
+        height: 2px;
+        background-color: $blue;
+        transition: transform .5s $easing, opacity .5s, background-color .3s;
+        + i {
+            margin-top: 8px;
+        }
+    }
+
+    &.active {
+        left: 280px;
+        i {
+            background-color: white;
+        }
+        .top {
+            transform: translateY(10px) rotate(-135deg);
+        }
+        .middle {
+            opacity: 0;
+            transform: rotate(135deg);
+        }
+        .bottom {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+    }
+
+
+    &, & * {
+        will-change: transform;
+    }
+}
+
+@media (min-width: 813px) {
+    .btn {
+        display: none;
+    }
+}

@@ -20,9 +20,7 @@ const sideDrawer = (props) => {
             />
             <div className={classes.join(' ')}>
                 <Logo/>
-                <nav>
-                    <NavigationItems type="SideDrawer"/>
-                </nav>
+                <NavigationItems type="SideDrawer"/>
             </div>
         </React.Fragment>
     );
