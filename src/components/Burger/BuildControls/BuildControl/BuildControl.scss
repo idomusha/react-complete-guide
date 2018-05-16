@@ -20,6 +20,7 @@
     background-color: white;
     color: #aaa;
     cursor: default;
+    opacity: .5;
 }
 
 .BuildControl button:active:disabled {
@@ -33,14 +34,14 @@
 }
 
 .BuildControl .Less {
-    border-color: mediumaquamarine;
+    border-color: mediumseagreen;
     background-color: white;
-    color: mediumaquamarine;
+    color: mediumseagreen;
 }
 
 .BuildControl .More {
-    border-color: mediumaquamarine;
-    background-color: mediumaquamarine;
+    border-color: mediumseagreen;
+    background-color: mediumseagreen;
     color: white;
 }
 
