@@ -36,8 +36,9 @@ $easing: cubic-bezier(.6, .05, .28, .91);
     display: block;
     position: fixed;
     z-index: 101;
-    top: 20px;
-    left: 20px;
+    top: 0;
+    left: 0;
+    margin: 20px;
     cursor: pointer;
     transition: left .3s $easing;
     i {
