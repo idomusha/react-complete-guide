@@ -1,0 +1,99 @@
+.Input {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+    margin-bottom: 10px;
+
+    &[data-type="checkbox"],
+    &[data-type="radio"] {
+        background-color: transparent;
+        margin: -2px -5px;
+        > div {
+            background-color: white;
+            display: inline-flex;
+            margin: 2px 5px;
+        }
+        .Label {
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            border: 1px solid lightgray;
+            background-color: white;
+            padding: 0 10px;
+            margin: 0;
+            height: 40px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        &.Invalid .Field:not(:focus) + .Label {
+            border: 1px solid crimson;
+            box-shadow: 0 0 1px 1px crimson;
+            background-color: rgba(crimson, .03);
+        }
+        .Field {
+            position: absolute;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            width: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+
+            & + .Label {
+                outline-offset: 4px;
+                outline: 2px solid transparent;
+                transition: outline .3s linear;
+            }
+
+            &:focus + .Label {
+                outline-color: rgba(orange, .6);
+                transition: outline .1s linear;
+            }
+            &:hover + .Label {
+                background-color: rgba(orange, 0.1);
+                border: 1px solid orange;
+                color: darken(orange, 5%);
+            }
+            &:checked + .Label {
+                background-color: orange;
+                border: 1px solid orange;
+                color: white;
+            }
+        }
+    }
+
+    .Field {
+        display: block;
+        width: 100%;
+        height: 40px;
+        margin: 0;
+        background-color: white;
+        border: 1px solid lightgray;
+        box-shadow: none;
+        padding: 0 10px;
+        box-sizing: border-box;
+        font-size: 14px;
+        outline-offset: 4px;
+        outline: 2px solid transparent;
+        transition: outline .3s linear;
+
+        &:focus {
+            outline-color: rgba(orange, .6);
+            transition: outline .1s linear;
+        }
+    }
+
+    .Label {
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    &.Invalid .Field:not(:focus) {
+        border: 1px solid crimson;
+        box-shadow: 0 0 1px 1px crimson;
+        background-color: rgba(crimson, .03);
+    }
+}

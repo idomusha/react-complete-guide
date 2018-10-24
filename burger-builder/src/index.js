@@ -1,8 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from 'react-router-dom';
+
 import "./index.scss";
 import App from "./App"; // Burger
 // import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const app = (
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+);
+ReactDOM.render(app, document.getElementById("root"));
 // registerServiceWorker();
