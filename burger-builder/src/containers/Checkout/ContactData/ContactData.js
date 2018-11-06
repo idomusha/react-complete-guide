@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from '../../../axios-orders';
 
 import Button from '../../../components/UI/Button/Button';
@@ -67,7 +68,7 @@ class ContactData extends Component {
                 elementType: 'email',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'idomusha@soot.black'
+                    placeholder: 'my@email.com'
                 },
                 elementValue: '',
                 validation: {
@@ -212,4 +213,11 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData;
+const mapStateToProps = (state) => {
+    return {
+        ingredients: state.ingredients,
+        price: state.totalPrice,
+    }
+}
+
+export default connect(mapStateToProps)(ContactData);

@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.App ul {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0;
+  text-align: left;
+  background-color: whitesmoke;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.App ul > li {
+  padding: 20px;
+}
