@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
-import * as actionTypes from '../../store/actions';
+import * as actions from '../../store/actions';
 
 class Checkout extends Component {
     /* state = {
@@ -39,30 +39,39 @@ class Checkout extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <CheckoutSummary
-                    ingredients={this.props.ingredients}
-                    checkoutCancelled={this.handleCheckoutCancelled}
-                    checkoutContinued={this.handleCheckoutContinued} />
-                <Route
-                    path={this.props.match.path + '/contact-data'}
-                    /* render={(props) => (
-                        <ContactData
-                            ingredients={this.props.ingredients}
-                            price={this.props.price}
-                            {...props} />
-                    )} */
-                    component={ContactData}
-                    />
-            </div>
-        );
+        let summary = <Redirect to="/"/>;
+
+        if (!this.props.ingredients || this.props.purchased) {
+            summary = <Redirect to="/"/>
+        } else {
+            summary = (
+                <div>
+                    <CheckoutSummary
+                        ingredients={this.props.ingredients}
+                        checkoutCancelled={this.handleCheckoutCancelled}
+                        checkoutContinued={this.handleCheckoutContinued} />
+                    <Route
+                        path={this.props.match.path + '/contact-data'}
+                        /* render={(props) => (
+                            <ContactData
+                                ingredients={this.props.ingredients}
+                                price={this.props.price}
+                                {...props} />
+                        )} */
+                        component={ContactData}
+                        />
+                </div>
+            );
+        }
+
+        return summary;
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        ingredients: state.ingredients
+        ingredients: state.builderReducer.ingredients,
+        purchased: state.orderReducer.purchased,
     };
 }
 
