@@ -213,7 +213,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData)),
+        onOrderBurger: (orderData) => dispatch(actions.purchase(orderData)),
     };
 };
 

@@ -171,7 +171,7 @@ const mapDispatchToProps = (dispatch) => {
         onAddIngredient: (name) => dispatch(actions.addIngredient(name)),
         onRemoveIngredient: (name) => dispatch(actions.removeIngredient(name)),
         onInitIngredients: () => dispatch(actions.initIngredients()),
-        onInitPurchase: () => dispatch(actions.initPurchase()),
+        onInitPurchase: () => dispatch(actions.purchaseInit()),
     };
 };
 
