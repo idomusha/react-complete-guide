@@ -16,14 +16,14 @@ class Persons extends Component {
             name: 'Firstname',
             age: Math.floor( Math.random() * 40 )
         }
-        this.setState( ( prevState ) => {
-            return { persons: prevState.persons.concat(newPerson)}
+        this.setState( ( state ) => {
+            return { persons: state.persons.concat(newPerson)}
         } );
     }
 
     personDeletedHandler = (personId) => {
-        this.setState( ( prevState ) => {
-            return { persons: prevState.persons.filter(person => person.id !== personId)}
+        this.setState( ( state ) => {
+            return { persons: state.persons.filter(person => person.id !== personId)}
         } );
     } */
 

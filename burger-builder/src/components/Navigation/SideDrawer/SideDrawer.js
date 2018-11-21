@@ -20,7 +20,9 @@ const sideDrawer = (props) => {
             />
             <div className={classes.join(' ')}>
                 <Logo/>
-                <NavigationItems type="SideDrawer"/>
+                <NavigationItems
+                    type="SideDrawer"
+                    logged={props.logged}/>
             </div>
         </React.Fragment>
     );

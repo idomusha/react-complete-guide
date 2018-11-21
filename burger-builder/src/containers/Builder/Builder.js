@@ -16,7 +16,7 @@ import * as actions from '../../store/actions';
     cheese: 1.324,
     meat: 3.473,
 } */
-class BurgerBuilder extends Component {
+class Builder extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -83,9 +83,15 @@ class BurgerBuilder extends Component {
     } */
 
     handlePurchase = () => {
-        this.setState({
-            purchasing: true,
-        });
+        if (this.props.logged) {
+            this.setState({
+                purchasing: true,
+            });
+        } else {
+            this.props.onSetRedirect('/checkout');
+            this.props.history.push('/sign');
+        }
+
     }
 
     handleCancelPurchase = () => {
@@ -135,6 +141,7 @@ class BurgerBuilder extends Component {
                         price={this.props.price}
                         purchasable={this.updatePurchaseState(this.props.ingredients)}
                         ordered={this.handlePurchase}
+                        logged={this.props.logged}
                     />
                 </React.Fragment>
             );
@@ -163,6 +170,7 @@ const mapStateToProps = (state) => {
         ingredients: state.builderReducer.ingredients,
         price: state.builderReducer.totalPrice,
         error: state.builderReducer.error,
+        logged: state.authReducer.logged,
     };
 };
 
@@ -172,7 +180,8 @@ const mapDispatchToProps = (dispatch) => {
         onRemoveIngredient: (name) => dispatch(actions.removeIngredient(name)),
         onInitIngredients: () => dispatch(actions.initIngredients()),
         onInitPurchase: () => dispatch(actions.purchaseInit()),
+        onSetRedirect: (path) => dispatch(actions.setRedirect(path)),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Builder, axios));

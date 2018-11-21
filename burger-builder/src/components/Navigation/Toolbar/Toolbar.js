@@ -7,7 +7,9 @@ import styles from './Toolbar.scss';
 const toolbar = (props) => (
     <header className={styles.Toolbar}>
         <Logo/>
-        <NavigationItems type="Toolbar"/>
+        <NavigationItems
+            type="Toolbar"
+            logged={props.logged}/>
     </header>
 );
 

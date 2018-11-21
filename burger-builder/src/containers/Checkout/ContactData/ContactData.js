@@ -71,7 +71,7 @@ class ContactData extends Component {
             email: {
                 elementType: 'email',
                 elementConfig: {
-                    type: 'text',
+                    type: 'email',
                     placeholder: 'my@email.com'
                 },
                 elementValue: '',
@@ -166,12 +166,14 @@ class ContactData extends Component {
 
     render() {
         const formElements = [];
+
         for (let key in this.state.orderForm) {
             formElements.push({
                 id: key,
                 config: this.state.orderForm[key],
             });
         }
+
         let form = (
             <form>
                 {formElements.map(formElement => (
