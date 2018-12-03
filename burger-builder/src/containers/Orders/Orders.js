@@ -14,7 +14,7 @@ class Orders extends Component {
     }; */
 
     componentDidMount() {
-        this.props.onFetchOrders(this.props.token);
+        this.props.onFetchOrders(this.props.token, this.props.user);
     }
 
     render() {
@@ -42,12 +42,13 @@ const mapStateToProps = (state) => {
         orders: state.orderReducer.orders,
         loading: state.orderReducer.loading,
         token: state.authReducer.token,
+        user: state.authReducer.user,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFetchOrders: (token) => dispatch(actions.fetchOrders(token)),
+        onFetchOrders: (token, user) => dispatch(actions.fetchOrders(token, user)),
     };
 };
 

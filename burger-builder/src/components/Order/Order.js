@@ -11,7 +11,7 @@ const order = (props) => {
         })
     }
 
-    const ingredientOutput = ingredients.map( ingredient => {
+    const ingredientOutput = ingredients.map( (ingredient) => {
         if(ingredient.amount > 0) {
             return <span
             key="ingredient.name"

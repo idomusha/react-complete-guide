@@ -14,4 +14,5 @@ export {
     auth,
     logout,
     setRedirect,
+    checkState,
 } from './auth';

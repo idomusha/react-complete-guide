@@ -2,7 +2,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 5px 0;
+    margin: 0;
+    padding: 10px 110px;
+    background-color: rgba(255, 255, 255, .3);
+    &:nth-child(even) {
+        background-color: rgba(0, 0, 0, .05);
+    }
+    + .BuildControl {
+        border-top: 1px solid white;
+    }
 }
 
 .BuildControl button {

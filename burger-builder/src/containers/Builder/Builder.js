@@ -170,7 +170,7 @@ const mapStateToProps = (state) => {
         ingredients: state.builderReducer.ingredients,
         price: state.builderReducer.totalPrice,
         error: state.builderReducer.error,
-        logged: state.authReducer.logged,
+        logged: state.authReducer.token !== null,
     };
 };
 
