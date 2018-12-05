@@ -6,6 +6,7 @@ import styles from './NavigationItem.scss';
 const navigationItem = (props) => (
     <li className={[styles.NavigationItem, styles[props.type]].join(' ')}>
         <NavLink
+            onClick={props.clicked}
             to={props.link}
             exact
             activeClassName={styles.active}>

@@ -2,7 +2,7 @@
     z-index: 200;
     position: fixed;
     width: 280px;
-    max-width: 70%;
+    max-width: calc(100vw - 75px);
     height: 100%;
     top: 0;
     left: 0;

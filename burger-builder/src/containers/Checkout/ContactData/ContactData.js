@@ -7,6 +7,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions';
+import { updateObject, checkValidity } from '../../../shared/utility';
 
 import styles from './ContactData.scss';
 
@@ -77,6 +78,7 @@ class ContactData extends Component {
                 elementValue: '',
                 validation: {
                     required: true,
+                    isEmail: true,
                 },
                 valid: false,
                 filled: false
@@ -124,16 +126,16 @@ class ContactData extends Component {
     }
 
     handleChangeInput = (event, inputIdentifier) => {
-        const updatedOrderForm = {
-            ...this.state.orderForm
-        };
-        const updatedOrderFormElement = {
-            ...updatedOrderForm[inputIdentifier]
-        };
-        updatedOrderFormElement.elementValue = event.target.value;
-        updatedOrderFormElement.valid = this.checkValidity(updatedOrderFormElement.elementValue, updatedOrderFormElement.validation);
-        updatedOrderFormElement.filled = true;
-        updatedOrderForm[inputIdentifier] = updatedOrderFormElement;
+
+        const updatedOrderFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+            elementValue: event.target.value,
+            valid: checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation),
+            filled: true,
+        });
+
+        const updatedOrderForm = updateObject(this.state.orderForm, {
+            [inputIdentifier]: updatedOrderFormElement,
+        });
 
         let formIsValid = true;
 
@@ -145,24 +147,6 @@ class ContactData extends Component {
             orderForm: updatedOrderForm,
             submit: formIsValid,
         });
-    }
-
-    checkValidity(value, rules) {
-        let isValid = true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        return isValid;
     }
 
     render() {

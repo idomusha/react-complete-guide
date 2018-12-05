@@ -7,6 +7,7 @@ import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import styles from './Auth.scss';
 import * as actions from '../../store/actions/';
+import { checkValidity } from '../../shared/utility';
 
 class Auth extends Component {
 
@@ -56,7 +57,7 @@ class Auth extends Component {
             [inputIdentifier]: {
                 ...this.state.signForm[inputIdentifier],
                 elementValue: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.signForm[inputIdentifier].validation),
+                valid: checkValidity(event.target.value, this.state.signForm[inputIdentifier].validation),
                 filled: true,
             },
         };
@@ -88,29 +89,6 @@ class Auth extends Component {
             };
         });
     };
-
-    checkValidity(value, rules) {
-        let isValid = true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        if (rules.isEmail) {
-            const pattern = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        return isValid;
-    }
 
     render() {
         const formElements = [];

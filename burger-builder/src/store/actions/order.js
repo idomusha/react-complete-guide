@@ -31,8 +31,6 @@ export const purchase = (orderData, token) => {
                 }
             })
             .then((response) => {
-                console.log(response.data.name);
-                console.log(orderData);
                 dispatch(purchaseSuccess(response.data.name, orderData))
             })
             .catch((error) => {

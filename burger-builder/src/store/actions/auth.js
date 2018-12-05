@@ -56,7 +56,6 @@ export const auth = (email, password, isSignup) => {
                 returnSecureToken: true,
             })
             .then((response) => {
-                console.log('auth', response);
                 var expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
 
                 localStorage.setItem('token', response.data.idToken);

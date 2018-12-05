@@ -22,7 +22,8 @@ const sideDrawer = (props) => {
                 <Logo/>
                 <NavigationItems
                     type="SideDrawer"
-                    logged={props.logged}/>
+                    logged={props.logged}
+                    clicked={props.closed}/>
             </div>
         </React.Fragment>
     );
