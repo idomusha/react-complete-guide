@@ -16,15 +16,15 @@ import * as actions from '../../store/actions';
     cheese: 1.324,
     meat: 3.473,
 } */
-class Builder extends Component {
+export class Builder extends Component {
     constructor(props) {
         super(props);
         this.state = {
             // ingredients: null,
-            // totalPrice: 4,
+            // price: 4,
             // purchasable: false,
             purchasing: false,
-            loading: false,
+            // loading: false,
         }
     }
 
@@ -34,7 +34,7 @@ class Builder extends Component {
 
     updatePurchaseState(ingredients) {
         const sum = Object.keys(ingredients)
-            .map(ingredientKey => {
+            .map((ingredientKey) => {
                 return ingredients[ingredientKey];
             })
             .reduce((sum, element) => {
@@ -130,7 +130,7 @@ class Builder extends Component {
         let orderSummary = null;
         let burger = this.props.error ? <p>Ingredients can't be loaded</p> : <Spinner/>;
 
-        if (this.props.ingredients !== null) {
+        if (this.props.ingredients) {
             burger = (
                 <React.Fragment>
                     <Burger ingredients={this.props.ingredients}/>
