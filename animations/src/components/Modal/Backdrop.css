@@ -1,0 +1,50 @@
+.Backdrop {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.BackdropOpened {
+    visibility: visible;
+    opacity: 1;
+    transition: all .3s ease-out;
+}
+
+.BackdropClosed {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s ease-out .15s;
+}
+
+.backdrop-fade-enter {
+    visibility: visible;
+    opacity: 0;
+}
+.backdrop-fade-enter-active {
+    visibility: visible;
+    opacity: 1;
+    transition: all .3s ease-out;
+}
+.backdrop-fade-enter-done {
+    visibility: visible;
+    opacity: 1;
+}
+.backdrop-fade-exit {
+    visibility: visible;
+    opacity: 1;
+}
+.backdrop-fade-exit-active {
+    visibility: visible;
+    opacity: 0;
+    transition: all 1s ease-out .15s;
+}
+.backdrop-fade-exit-done {
+    visibility: hidden;
+    opacity: 0;
+}

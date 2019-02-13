@@ -22,7 +22,7 @@ const rootReducer = (state = initialState, action) => {
         };
     }
 
-    throw new Error(`${action.type} is not listed as known action type`);
+    // throw new Error(`${action.type} is not listed as known action type`);
 
     return state;
 };
@@ -37,6 +37,6 @@ store.subscribe(() => {
 });
 
 // Dispatching action
-store.dispatch({type: 'IN_COUNTER'});
-// store.dispatch({type: 'ADD_COUNTER', value: 10});
+store.dispatch({type: 'INC_COUNTER'});
+store.dispatch({type: 'ADD_COUNTER', value: 10});
 console.log(store.getState());

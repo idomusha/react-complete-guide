@@ -6,12 +6,12 @@ import { AuthContext } from "../../../containers/App";
 class Person extends Component {
   constructor(props) {
     super(props);
-    this.textInput = React.createRef();
+    this.inputElement = React.createRef();
   }
 
   componentDidMount() {
     if (this.props.position === 0) {
-      this.textInput.current.focus();
+      this.inputElement.current.focus();
     }
   }
 
@@ -21,7 +21,7 @@ class Person extends Component {
   }
 
   focus() {
-    this.textInput.current.focus();
+    this.inputElement.current.focus();
   }
 
   render() {
@@ -38,7 +38,7 @@ class Person extends Component {
         </h3>
         <p>{this.props.children}</p>
         <input
-          ref={this.textInput}
+          ref={this.inputElement}
           type="text"
           onChange={this.props.change}
           value={this.props.name}
