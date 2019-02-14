@@ -6,11 +6,10 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.8);
-    visibility: hidden;
-    opacity: 0;
+    display: none;
 }
 
-.BackdropOpened {
+/* .BackdropOpened {
     visibility: visible;
     opacity: 1;
     transition: all .3s ease-out;
@@ -20,31 +19,27 @@
     visibility: hidden;
     opacity: 0;
     transition: all 1s ease-out .15s;
-}
+} */
 
+[class*="backdrop-fade"] {
+    display: block;
+}
 .backdrop-fade-enter {
-    visibility: visible;
+    transition: all .3s ease-out;
     opacity: 0;
 }
 .backdrop-fade-enter-active {
-    visibility: visible;
     opacity: 1;
-    transition: all .3s ease-out;
 }
 .backdrop-fade-enter-done {
-    visibility: visible;
-    opacity: 1;
+
 }
 .backdrop-fade-exit {
-    visibility: visible;
-    opacity: 1;
-}
-.backdrop-fade-exit-active {
-    visibility: visible;
-    opacity: 0;
     transition: all 1s ease-out .15s;
 }
-.backdrop-fade-exit-done {
-    visibility: hidden;
+.backdrop-fade-exit-active {
     opacity: 0;
+}
+.backdrop-fade-exit-done {
+
 }

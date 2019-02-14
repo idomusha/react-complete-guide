@@ -10,38 +10,46 @@
     top: 30%;
     left: 25%;
     width: 50%;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-100vh);
+    display: none;
 }
 
-.ModalOpened {
+/* .ModalOpened {
     animation: openModal .3s ease-out forwards;
     transition: all .3s ease-out;
     visibility: visible;
 }
 
 .ModalClosed {
-    animation: closeModal .3s ease-in forwards;
+    animation: closeModal 1s ease-in forwards;
     transition: all 1s ease-out;
     visibility: hidden;
+} */
+
+[class*="modal-slide"] {
+    display: block;
 }
-
 .modal-slide-enter {
-
+    transition: all .3s ease-out;
+    opacity: 0;
+    transform: translateY(-100vh);
+}
+.modal-slide-enter-active {
+    animation: openModal .3s ease-out forwards;;
 }
 .modal-slide-enter-done {
-    animation: openModal .3s ease-out forwards;
-    transition: all .3s ease-out;
-    visibility: visible;
+    opacity: 1;
+    transform: translateY(0vh);
 }
 .modal-slide-exit {
-
+    transition: all 1s ease-out;
+    opacity: 1;
+    transform: translateY(0vh);
+}
+.modal-slide-exit-active {
+    animation: closeModal 1s ease-in forwards;
 }
 .modal-slide-exit-done {
-    animation: closeModal .3s ease-in forwards;
-    transition: all 1s ease-out;
-    visibility: hidden;
+
 }
 
 @keyframes openModal {

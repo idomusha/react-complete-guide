@@ -18,6 +18,16 @@ const modal = (props) => {
                 mountOnEnter
                 unmountOnExit
                 classNames="backdrop-fade"
+                // classNames={{
+                //     enter: 'enter',
+                //     enterActive: 'entering',
+                //     enterDone: 'entered',
+                //     exit: 'exit',
+                //     exitActive: 'exiting',
+                //     exitDone: 'exited',
+                //     appear: 'appear',
+                //     appearActive: 'appearing',
+                // }}
             >
                 <div className="Backdrop" onClick={props.closed}></div>
             </CSSTransition>

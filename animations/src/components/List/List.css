@@ -6,6 +6,7 @@
 }
 
 .ListItem {
+    position: relative;
     margin: 0;
     padding: 10px;
     box-sizing: border-box;
@@ -14,9 +15,36 @@
     background-color: white;
     text-align: center;
     cursor: pointer;
+    display: none;
 }
 
 .ListItem:hover,
 .ListItem:active {
     background-color: #ccc;
+}
+
+[class*="listitem"] {
+    display: block;
+}
+.listitem-fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all .6s ease-out;
+}
+.listitem-fade-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+}
+.listitem-fade-enter-done {
+
+}
+.listitem-fade-exit {
+    transition: all .6s ease-out;
+}
+.listitem-fade-exit-active {
+    opacity: 0;
+    transform: translateX(50%);
+}
+.listitem-fade-exit-done {
+
 }
