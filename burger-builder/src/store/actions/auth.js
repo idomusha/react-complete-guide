@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
@@ -24,25 +24,36 @@ export const authFail = (error) => {
 
 export const logout = () => {
 
-    localStorage.removeItem('token');
-    localStorage.removeItem('expirationDate');
-    localStorage.removeItem('user');
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('expirationDate');
+    // localStorage.removeItem('user');
 
+    return {
+        // type: actionTypes.AUTH_LOGOUT,
+        type: actionTypes.AUTH_INITIATE_LOGOUT,
+    };
+};
+
+export const logoutSuccess = () => {
     return {
         type: actionTypes.AUTH_LOGOUT,
     };
 };
 
 export const checkAuthTimeout = (expirationTime) => {
-    return dispatch => {
+    /* return dispatch => {
         setTimeout(() => {
             dispatch(logout());
         }, expirationTime * 1000);
-    }
+    } */
+    return {
+        type: actionTypes.AUTH_CHECK_TIMEOUT,
+        expirationTime
+    };
 };
 
 export const auth = (email, password, isSignup) => {
-    return dispatch => {
+    /* return dispatch => {
         dispatch(authStart());
         // console.log('isSignup', isSignup);
         const API_KEY = 'AIzaSyDSQt9hMYteuwKyWKl2Qma1JBZLnwWoBqA'
@@ -67,8 +78,14 @@ export const auth = (email, password, isSignup) => {
             })
             .catch((error) => {
                 dispatch(authFail(error.response.data.error));
-            })
-    };
+            });
+    }; */
+    return {
+        type: actionTypes.AUTH,
+        email,
+        password,
+        isSignup,
+    }
 };
 
 export const setRedirect = (path) => {
@@ -79,7 +96,7 @@ export const setRedirect = (path) => {
 }
 
 export const checkState = () => {
-    return dispatch => {
+    /* return dispatch => {
         const token = localStorage.getItem('token');
         if (token) {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
@@ -92,5 +109,8 @@ export const checkState = () => {
         }
         dispatch(logout());
         return false;
+    }; */
+    return {
+        type: actionTypes.AUTH_CHECK_STATE,
     };
 };

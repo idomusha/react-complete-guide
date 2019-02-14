@@ -1,5 +1,5 @@
+// import axios from '../../axios-orders';
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-orders';
 
 export const purchaseSuccess = (id, data) => {
     return {
@@ -23,7 +23,7 @@ export const purchaseStart = () => {
 };
 
 export const purchase = (orderData, token) => {
-    return (dispatch) => {
+    /* return (dispatch) => {
         dispatch(purchaseStart());
         axios.post('/orders.json', orderData, {
                 params: {
@@ -36,6 +36,11 @@ export const purchase = (orderData, token) => {
             .catch((error) => {
                 dispatch(purchaseFail(error))
             });
+    } */
+    return {
+        type: actionTypes.PURCHASE,
+        orderData,
+        token
     }
 };
 
@@ -66,7 +71,7 @@ export const fetchOrdersStart = () => {
 };
 
 export const fetchOrders = (token, user) => {
-    return (dispatch) => {
+    /* return (dispatch) => {
         dispatch(fetchOrdersStart());
         axios.get('/orders.json', {
             params: {
@@ -86,17 +91,22 @@ export const fetchOrders = (token, user) => {
             }
 
 
-            /* this.setState({
-                loading: false,
-                orders: fetchedOrders,
-            }); */
+            // this.setState({
+            //     loading: false,
+            //     orders: fetchedOrders,
+            // });
             dispatch(fetchOrdersSuccess(fetchedOrders));
         })
         .catch(error => {
-            /* this.setState({
-                loading: false,
-            }); */
+            // this.setState({
+            //     loading: false,
+            // });
             dispatch(fetchOrdersFail(error));
         });
-    };
+    }; */
+    return {
+        type: actionTypes.FETCH_ORDERS,
+        token,
+        user,
+    }
 }
