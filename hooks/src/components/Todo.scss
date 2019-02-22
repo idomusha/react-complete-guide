@@ -1,0 +1,35 @@
+
+form {
+    margin: 10px;
+}
+input, button {
+    height: 40px;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+button {
+    border: 0 transparent;
+    padding: 0 20px;
+    background-color: seagreen;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+button + button {
+    margin-left: 0.5em;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+.not-valid {
+    @include placeholder {
+        font-style:italic;
+        color: white;
+        font-weight:100;
+    }
+}

@@ -1,5 +1,5 @@
-import * as actionTypes from './actionTypes';
 // import axios from '../../axios-orders';
+import * as actionTypes from './actionTypes';
 
 export const addIngredient = (name) => {
     return {
