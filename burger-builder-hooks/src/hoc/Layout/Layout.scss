@@ -1,0 +1,7 @@
+.Content {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 60px);
+    box-sizing: border-box;
+    justify-content: stretch;
+}

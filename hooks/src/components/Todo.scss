@@ -8,6 +8,9 @@ input, button {
     padding: 5px;
     box-sizing: border-box;
 }
+input {
+    border: 1px solid lightgrey;
+}
 button {
     border: 0 transparent;
     padding: 0 20px;
@@ -21,15 +24,15 @@ button + button {
 }
 
 @mixin placeholder {
-  ::-webkit-input-placeholder {@content}
-  :-moz-placeholder           {@content}
-  ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
 }
-.not-valid {
+input.not-valid {
+    border: 2px solid crimson;
     @include placeholder {
-        font-style:italic;
-        color: white;
-        font-weight:100;
+        color: crimson;
+        font-weight: 700;
     }
 }

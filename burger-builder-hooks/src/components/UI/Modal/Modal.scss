@@ -1,0 +1,12 @@
+.Modal {
+    position: relative;
+    background-color: white;
+    width: calc(100vw - 32px);
+    max-width: 500px;
+    max-height: calc(100vw - 32px);
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+}
